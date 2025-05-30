@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/images"/>
+    <qresource prefix="/">
+        <file>../../../Downloads/IMG_2409 2.heic</file>
+    </qresource>
+</RCC>

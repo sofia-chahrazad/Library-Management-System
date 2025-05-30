@@ -1,0 +1,31 @@
+1234|Harry Potter|J.K. Rowling|Fantasy|1997|4
+5678|1984|George Orwell|Dystopian|1949|5
+9101|The Hobbit|J.R.R. Tolkien|Fantasy|1937|1
+1121|To Kill a Mockingbird|Harper Lee|Classic|1960|0
+3141|The Catcher in the Rye|J.D. Salinger|Classic|1951|0
+5161|Brave New World|Aldous Huxley|Dystopian|1932|0
+7181|The Great Gatsby|F. Scott Fitzgerald|Classic|1925|0
+9202|Moby Dick|Herman Melville|Adventure|1851|0
+1022|Pride and Prejudice|Jane Austen|Romance|1813|0
+1132|The Alchemist|Paulo Coelho|Philosophical|1988|0
+9999|Sofia Chahrazad|Sofia RALSAIN|Autobiography|2025|0
+1345|Dune|Frank Herbert|Science Fiction|1965|3
+1415|The Name of the Wind|Patrick Rothfuss|Fantasy|2007|4
+1516|The Road|Cormac McCarthy|Post-Apocalyptic|2006|2
+1617|Frankenstein|Mary Shelley|Horror|1818|0
+1718|Dracula|Bram Stoker|Horror|1897|0
+1819|The Brothers Karamazov|Fyodor Dostoevsky|Philosophical|1880|1
+1920|Crime and Punishment|Fyodor Dostoevsky|Classic|1866|1
+2021|The Book Thief|Markus Zusak|Historical Fiction|2005|2
+2122|A Game of Thrones|George R.R. Martin|Fantasy|1996|2
+2223|Les Misérables|Victor Hugo|Historical Fiction|1862|0
+2324|The Little Prince|Antoine de Saint-Exupéry|Children's|1943|3
+2425|The Stranger|Albert Camus|Philosophical|1942|0
+2526|Sapiens|Yuval Noah Harari|Non-fiction|2011|1
+2627|Educated|Tara Westover|Memoir|2018|2
+2728|Thinking, Fast and Slow|Daniel Kahneman|Non-fiction|2011|1
+2829|Atomic Habits|James Clear|Self-help|2018|2
+2930|The Silent Patient|Alex Michaelides|Thriller|2019|1
+3031|It Ends with Us|Colleen Hoover|Romance|2016|0
+3132|Project Hail Mary|Andy Weir|Science Fiction|2021|3
+1222244|sofia|anguel||2025|4

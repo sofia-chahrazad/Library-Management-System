@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StudentDashboard</class>
+ <widget class="QWidget" name="StudentDashboard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>929</width>
+    <height>562</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#StudentDashboard{
+ background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 #320453, stop:1 #802CBD);
+}
+
+
+QLineEdit#searchLineEdit {
+    border-radius: 25px;
+    background-color: #cecece;
+    color: #3d3d3d;
+}
+
+QTableWidget {
+    background-color: #cecece;
+    border-radius: 15px;
+	color: black;
+
+}
+
+QPushButton#borrowButton {
+    background-color: #3DBBFF;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+}
+QPushButton#borrowButton:hover{
+background-color: #2289A9;
+}
+QPushButton#returnButton {
+    background-color: #32CD32;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+}
+QPushButton#returnButton:hover{
+ background-color: #308420;
+}
+QPushButton#reportButton {
+    background-color: #FF6347;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+}
+QPushButton#reportButton:hover{
+	background-color:#8C1717;
+}
+QPushButton#logoutButton {
+    border: none;
+    background: transparent;
+	border-radius: 25px;
+	padding-left:2px;
+	padding-top:2px;
+}
+QPushButton#logoutButton:hover{
+	background-color:#FF6347;
+}</string>
+  </property>
+  <widget class="QLineEdit" name="searchLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>90</y>
+     <width>351</width>
+     <height>51</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="searchButton">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>90</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> QPushButton#searchButton {
+     
+       border: 4px solid #cecece;
+       
+       padding-left: 4px;
+       min-width: 36px;
+       min-height: 36px;
+	  color: black;
+	  border-radius: 25px;
+	  background-color: #3d3d3d
+    }
+QPushButton#searchButton:hover{
+	  background-color:#1DB500;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::EditFind"/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>36</width>
+     <height>36</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="bookTableWidget">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>200</y>
+     <width>631</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>Title</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Author</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>ISBN</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Year</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Available</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="borrowButton">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>480</y>
+     <width>161</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Borrow</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="returnButton">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>481</y>
+     <width>161</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Return</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="reportButton">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>480</y>
+     <width>161</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Report</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="logoutButton">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>10</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::ApplicationExit"/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>45</width>
+     <height>45</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="searchComboBox">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>90</y>
+     <width>103</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>All</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Title</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>ISBN</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Author</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Year</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Available</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>20</y>
+     <width>571</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>30</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ENSIA Library Management System </string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

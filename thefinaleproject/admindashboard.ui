@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>adminDashboard</class>
+ <widget class="QWidget" name="adminDashboard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>850</width>
+    <height>629</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#adminDashboard{
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 #320453, stop:1 #802CBD);
+}
+QPushButton#addButton{
+border-radius: 25px;	
+	background-color: grey;
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+	background-color:#1DB500;
+}
+QPushButton#addButton:hover{
+	background-color:#308420;
+}
+
+
+QPushButton#removeButton{
+border-radius: 25px;	
+	background-color: grey;
+	font-size: 18px;
+	font-weight: bold;
+	background-color:#FF4C4C;
+	color: white;
+}
+QPushButton#removeButton:hover{
+	background-color:#8C1717;
+}
+QPushButton#reportButton{
+border-radius: 25px;	
+	background-color: grey;
+	font-size: 18px;
+	font-weight: bold;
+	background-color:#00C2FF;
+	color: white;
+}
+QPushButton#reportButton:hover{
+	background-color:#2289A9;
+}
+QPushButton#logoutButton{
+	border-radius:25px;
+}
+QPushButton#logoutButton:hover{
+	background-color:#FF4C4C;
+}
+QPushButton#searchButton{
+	border-radius: 25px;	
+	font-size: 18px;
+	font-weight: bold;
+	background-color:#a3a3a3;
+}
+QPushButton#searchButton:hover{
+	background-color:#1DB500;
+}
+
+QLineEdit{
+	background-color: #a3a3a3;
+	border-radius: 25px;
+	font-size: 18px;
+	color: black;
+}
+QTableWidget#tableWidget {
+    border: 1px solid #a3a3a3;
+    background: #cecece; 
+	border-radius: 30px;
+	color: black
+}
+</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>30</y>
+     <width>511</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>30</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ENSIA Library Management System</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="searchLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>90</y>
+     <width>331</width>
+     <height>51</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="searchComboBox">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>100</y>
+     <width>103</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>All</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Title</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Author</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>ISBN</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="searchButton">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>90</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::SystemSearch"/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>40</width>
+     <height>40</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="logoutButton">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>20</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::ApplicationExit"/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>45</width>
+     <height>42</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>200</y>
+     <width>651</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>Title</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Author</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Year</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>ISBN</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>availabity</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="addButton">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>500</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="removeButton">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>500</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Remove</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="reportButton">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>500</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Print Report</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
