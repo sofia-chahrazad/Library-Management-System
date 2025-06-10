@@ -30,60 +30,72 @@ A simple and efficient Library Management System built with C++ and Qt Framework
 - **Text Files** — Lightweight data persistence (books, users, transactions).
 
 ## 📁 Project Structure
-📁 Project: thefinaleproject
-📄 Project File
-	•	thefinaleproject.pro
-📂 En-têtes (Header Files)
-	•	adddialog.h
-	•	admindashboard.h
-	•	adminlogin.h
-	•	book.h
-	•	borrowdialog.h
-	•	library.h
-	•	mainwindow.h
-	•	reportdialog.h
-	•	returndialog.h
-	•	studentdashboard.h
-	•	studentlogin.h
-	•	transaction.h
-	•	TransactionManager.h
-📂 Sources (Source Files)
-	•	adddialog.cpp
-	•	admindashboard.cpp
-	•	adminlogin.cpp
-	•	borrowdialog.cpp
-	•	library.cpp
-	•	main.cpp
-	•	mainwindow.cpp
-	•	reportdialog.cpp
-	•	returndialog.cpp
-	•	studentdashboard.cpp
-	•	studentlogin.cpp
-📂 Formulaires (UI Files)
-	•	adddialog.ui
-	•	admindashboard.ui
-	•	adminlogin.ui
-	•	borrowdialog.ui
-	•	mainwindow.ui
-	•	reportdialog.ui
-	•	returndialog.ui
-	•	studentdashboard.ui
-	•	studentlogin.ui
-📂 Ressources (Qt Resource Files)
-	•	book.qrc
-	•	ressources.qrc
-📂 Autres fichiers (Other Files)
-	•	books.txt
-	•	transactions.txt
 
- 
+**Project Name:** `thefinaleproject`  
+**Project File:** `thefinaleproject.pro`
+
+### 📂 Headers (`.h`)
+- `adddialog.h`
+- `admindashboard.h`
+- `adminlogin.h`
+- `book.h`
+- `borrowdialog.h`
+- `library.h`
+- `mainwindow.h`
+- `reportdialog.h`
+- `returndialog.h`
+- `studentdashboard.h`
+- `studentlogin.h`
+- `transaction.h`
+- `TransactionManager.h`
+
+### 📂 Source Files (`.cpp`)
+- `adddialog.cpp`
+- `admindashboard.cpp`
+- `adminlogin.cpp`
+- `borrowdialog.cpp`
+- `library.cpp`
+- `main.cpp`
+- `mainwindow.cpp`
+- `reportdialog.cpp`
+- `returndialog.cpp`
+- `studentdashboard.cpp`
+- `studentlogin.cpp`
+
+### 📂 UI Files (`.ui`)
+- `adddialog.ui`
+- `admindashboard.ui`
+- `adminlogin.ui`
+- `borrowdialog.ui`
+- `mainwindow.ui`
+- `reportdialog.ui`
+- `returndialog.ui`
+- `studentdashboard.ui`
+- `studentlogin.ui`
+
+### 📂 Resources
+- `book.qrc`
+- `ressources.qrc`
+
+### 📂 Data Files
+- `books.txt`
+- `transactions.txt`
+- `reports.txt`
+
+---
+
 ## 🧪 How to Run
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/sofia-chahrazad/Library-Management-System.git
-   cd library-management-system
-   qmake library.pro
-   make
-   ./library-management-system
- 
+### 🔁 Clone the Repository
+
+```bash
+git clone https://github.com/sofia-chahrazad/Library-Management-System.git
+cd Library-Management-System
+
+```
+
+⚙️ Build & Run (Terminal)
+```bash
+qmake thefinaleproject.pro
+make
+./thefinaleproject
