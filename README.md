@@ -78,11 +78,12 @@ A simple and efficient Library Management System built with C++ and Qt Framework
 
  
 ## 🧪 How to Run
+
 1. Clone the repository:
    ```bash
-   git clone https://github.com/sofia-chahrazad/library-management-system.git
+   git clone https://github.com/sofia-chahrazad/Library-Management-System.git
    cd library-management-system
-qmake library.pro
-make
-./library-management-system
+   qmake library.pro
+   make
+   ./library-management-system
  
