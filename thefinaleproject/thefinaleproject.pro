@@ -59,4 +59,5 @@ DISTFILES += books.txt \
     ../../books.txt \
     ../../transactions.txt \
     ../books.txt \
+    ../reports.txt \
     ../transactions.txt
