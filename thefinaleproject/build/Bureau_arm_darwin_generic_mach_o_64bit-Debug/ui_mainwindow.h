@@ -30,12 +30,13 @@ public:
     QPushButton *studentButton;
     QPushButton *adminButton;
     QLabel *profileLabel;
+    QPushButton *appButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 600);
+        MainWindow->resize(800, 659);
         MainWindow->setStyleSheet(QString::fromUtf8("QWidget#centralwidget{\n"
 "	background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 #320453, stop:1 #802CBD);\n"
 "\n"
@@ -110,6 +111,24 @@ public:
         profileLabel = new QLabel(centralwidget);
         profileLabel->setObjectName("profileLabel");
         profileLabel->setGeometry(QRect(210, 430, 141, 141));
+        appButton = new QPushButton(centralwidget);
+        appButton->setObjectName("appButton");
+        appButton->setGeometry(QRect(40, 160, 251, 71));
+        QFont font3;
+        font3.setPointSize(23);
+        font3.setBold(true);
+        appButton->setFont(font3);
+        appButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #32CD32;\n"
+"    color: white;\n"
+"    font-weight: bold;\n"
+"    border-radius: 34px;\n"
+"    padding: 10px 20px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color:#308420;\n"
+"}"));
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -128,6 +147,7 @@ public:
         studentButton->setText(QCoreApplication::translate("MainWindow", "A Student", nullptr));
         adminButton->setText(QCoreApplication::translate("MainWindow", "Admin", nullptr));
         profileLabel->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        appButton->setText(QCoreApplication::translate("MainWindow", "about the app", nullptr));
     } // retranslateUi
 
 };

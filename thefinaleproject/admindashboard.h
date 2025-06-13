@@ -12,6 +12,7 @@ class adminDashboard : public QWidget
     Q_OBJECT
 
 public:
+    void removeSelectedBook();
 
     void loadBooksToTable(const QString &filename);
 
@@ -24,6 +25,7 @@ public:
 
 private slots:
     void on_addButton_clicked();
+    void on_reportButton_clicked();
 
 private:
       Library* lib;

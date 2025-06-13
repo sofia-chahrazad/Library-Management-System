@@ -2,5 +2,7 @@
     <qresource prefix="/images"/>
     <qresource prefix="/">
         <file>IMG_2409.heic</file>
+        <file>library.png</file>
     </qresource>
+    <qresource prefix="/library"/>
 </RCC>

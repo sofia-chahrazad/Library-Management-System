@@ -18,6 +18,7 @@ public:
 
     void on_studentButton_clicked();
     void on_adminButton_clicked();
+    void on_appButton_clicked();
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 

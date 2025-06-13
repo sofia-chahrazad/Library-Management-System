@@ -3,6 +3,7 @@
 #include<QPainter>
 #include<QPainterPath>
 #include<QDebug>
+#include"app.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -36,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->profileLabel->setPixmap(circularPixmap);
     connect(ui->studentButton, &QPushButton::clicked, this, &MainWindow::on_studentButton_clicked);
     connect(ui->adminButton, &QPushButton::clicked, this, &MainWindow::on_adminButton_clicked);
+    connect(ui->appButton, &QPushButton::clicked, this, &MainWindow::on_appButton_clicked);
 }
 
 
@@ -49,7 +51,11 @@ void MainWindow::on_adminButton_clicked() {
     adminLogin.exec();
 
 }
+void MainWindow::on_appButton_clicked() {
+    app adminLogin (this);
+    adminLogin.exec();
 
+}
 MainWindow::~MainWindow()
 {
     delete ui;

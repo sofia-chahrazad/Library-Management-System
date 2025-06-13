@@ -8,14 +8,18 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+QT += printsupport
+
 SOURCES += \
     adddialog.cpp \
     admindashboard.cpp \
     adminlogin.cpp \
+    app.cpp \
     borrowdialog.cpp \
-    library.cpp \
+    library.cpp\
     main.cpp \
     mainwindow.cpp \
+    removedialog.cpp \
     reportdialog.cpp \
     returndialog.cpp \
     studentdashboard.cpp \
@@ -26,10 +30,12 @@ HEADERS += \
     adddialog.h \
     admindashboard.h \
     adminlogin.h \
+    app.h \
     book.h \
     borrowdialog.h \
-    library.h \
+    library.h\
     mainwindow.h \
+    removedialog.h \
     reportdialog.h \
     returndialog.h \
     studentdashboard.h \
@@ -40,8 +46,10 @@ FORMS += \
     adddialog.ui \
     admindashboard.ui \
     adminlogin.ui \
+    app.ui \
     borrowdialog.ui \
     mainwindow.ui \
+    removedialog.ui \
     reportdialog.ui \
     returndialog.ui \
     studentdashboard.ui \

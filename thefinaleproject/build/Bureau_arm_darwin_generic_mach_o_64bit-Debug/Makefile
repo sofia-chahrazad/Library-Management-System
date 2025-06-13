@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -mmacosx-version-min=14.0 -Wall -Wextra $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -mmacosx-version-min=14.0 -Wall -Wextra $(DEFINES)
-INCPATH       = -I../../../thefinaleproject -I. -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/AGL.framework/Headers -I/opt/homebrew/share/qt/mkspecs/macx-clang -F/opt/homebrew/lib
+INCPATH       = -I../../../thefinaleproject -I. -I/opt/homebrew/lib/QtPrintSupport.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/AGL.framework/Headers -I/opt/homebrew/share/qt/mkspecs/macx-clang -F/opt/homebrew/lib
 QMAKE         = /opt/homebrew/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = thefinaleproject1.0.0
 DISTDIR = /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/.tmp/thefinaleproject1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -mmacosx-version-min=14.0 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/opt/homebrew/lib
-LIBS          = $(SUBLIBS) -F/opt/homebrew/lib -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtCore -framework IOKit -framework DiskArbitration -framework UniformTypeIdentifiers -framework AGL -framework OpenGL   
+LIBS          = $(SUBLIBS) -F/opt/homebrew/lib -framework QtPrintSupport -framework ApplicationServices -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtCore -framework IOKit -framework DiskArbitration -framework UniformTypeIdentifiers -lcups -framework AGL -framework OpenGL   
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 SED           = sed
@@ -55,10 +55,12 @@ OBJECTS_DIR   = ./
 SOURCES       = ../../adddialog.cpp \
 		../../admindashboard.cpp \
 		../../adminlogin.cpp \
+		../../app.cpp \
 		../../borrowdialog.cpp \
 		../../library.cpp \
 		../../main.cpp \
 		../../mainwindow.cpp \
+		../../removedialog.cpp \
 		../../reportdialog.cpp \
 		../../returndialog.cpp \
 		../../studentdashboard.cpp \
@@ -67,8 +69,10 @@ SOURCES       = ../../adddialog.cpp \
 		moc_adddialog.cpp \
 		moc_admindashboard.cpp \
 		moc_adminlogin.cpp \
+		moc_app.cpp \
 		moc_borrowdialog.cpp \
 		moc_mainwindow.cpp \
+		moc_removedialog.cpp \
 		moc_reportdialog.cpp \
 		moc_returndialog.cpp \
 		moc_studentdashboard.cpp \
@@ -76,10 +80,12 @@ SOURCES       = ../../adddialog.cpp \
 OBJECTS       = adddialog.o \
 		admindashboard.o \
 		adminlogin.o \
+		app.o \
 		borrowdialog.o \
 		library.o \
 		main.o \
 		mainwindow.o \
+		removedialog.o \
 		reportdialog.o \
 		returndialog.o \
 		studentdashboard.o \
@@ -89,8 +95,10 @@ OBJECTS       = adddialog.o \
 		moc_adddialog.o \
 		moc_admindashboard.o \
 		moc_adminlogin.o \
+		moc_app.o \
 		moc_borrowdialog.o \
 		moc_mainwindow.o \
+		moc_removedialog.o \
 		moc_reportdialog.o \
 		moc_returndialog.o \
 		moc_studentdashboard.o \
@@ -476,10 +484,12 @@ DIST          = ../../books.txt \
 		../../adddialog.h \
 		../../admindashboard.h \
 		../../adminlogin.h \
+		../../app.h \
 		../../book.h \
 		../../borrowdialog.h \
 		../../library.h \
 		../../mainwindow.h \
+		../../removedialog.h \
 		../../reportdialog.h \
 		../../returndialog.h \
 		../../studentdashboard.h \
@@ -487,10 +497,12 @@ DIST          = ../../books.txt \
 		../../transaction.h ../../adddialog.cpp \
 		../../admindashboard.cpp \
 		../../adminlogin.cpp \
+		../../app.cpp \
 		../../borrowdialog.cpp \
 		../../library.cpp \
 		../../main.cpp \
 		../../mainwindow.cpp \
+		../../removedialog.cpp \
 		../../reportdialog.cpp \
 		../../returndialog.cpp \
 		../../studentdashboard.cpp \
@@ -515,7 +527,7 @@ include /opt/homebrew/Cellar/qt/6.9.0/share/qt/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-thefinaleproject.app/Contents/MacOS/thefinaleproject: ui_adddialog.h ui_admindashboard.h ui_adminlogin.h ui_borrowdialog.h ui_mainwindow.h ui_reportdialog.h ui_returndialog.h ui_studentdashboard.h ui_studentlogin.h $(OBJECTS)  
+thefinaleproject.app/Contents/MacOS/thefinaleproject: ui_adddialog.h ui_admindashboard.h ui_adminlogin.h ui_app.h ui_borrowdialog.h ui_mainwindow.h ui_removedialog.h ui_reportdialog.h ui_returndialog.h ui_studentdashboard.h ui_studentlogin.h $(OBJECTS)  
 	@test -d thefinaleproject.app/Contents/MacOS/ || mkdir -p thefinaleproject.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET)  $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -893,6 +905,7 @@ Makefile: ../../thefinaleproject.pro /opt/homebrew/share/qt/mkspecs/macx-clang/q
 		../../thefinaleproject.pro \
 		../../book.qrc \
 		../../ressources.qrc \
+		/opt/homebrew/lib/QtPrintSupport.framework/Resources/QtPrintSupport.prl \
 		/opt/homebrew/lib/QtWidgets.framework/Resources/QtWidgets.prl \
 		/opt/homebrew/lib/QtGui.framework/Resources/QtGui.prl \
 		/opt/homebrew/lib/QtCore.framework/Resources/QtCore.prl
@@ -1271,6 +1284,7 @@ Makefile: ../../thefinaleproject.pro /opt/homebrew/share/qt/mkspecs/macx-clang/q
 ../../thefinaleproject.pro:
 ../../book.qrc:
 ../../ressources.qrc:
+/opt/homebrew/lib/QtPrintSupport.framework/Resources/QtPrintSupport.prl:
 /opt/homebrew/lib/QtWidgets.framework/Resources/QtWidgets.prl:
 /opt/homebrew/lib/QtGui.framework/Resources/QtGui.prl:
 /opt/homebrew/lib/QtCore.framework/Resources/QtCore.prl:
@@ -1300,9 +1314,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../book.qrc ../../ressources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../TransactionManager.h ../../adddialog.h ../../admindashboard.h ../../adminlogin.h ../../book.h ../../borrowdialog.h ../../library.h ../../mainwindow.h ../../reportdialog.h ../../returndialog.h ../../studentdashboard.h ../../studentlogin.h ../../transaction.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../adddialog.cpp ../../admindashboard.cpp ../../adminlogin.cpp ../../borrowdialog.cpp ../../library.cpp ../../main.cpp ../../mainwindow.cpp ../../reportdialog.cpp ../../returndialog.cpp ../../studentdashboard.cpp ../../studentlogin.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../adddialog.ui ../../admindashboard.ui ../../adminlogin.ui ../../borrowdialog.ui ../../mainwindow.ui ../../reportdialog.ui ../../returndialog.ui ../../studentdashboard.ui ../../studentlogin.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../../TransactionManager.h ../../adddialog.h ../../admindashboard.h ../../adminlogin.h ../../app.h ../../book.h ../../borrowdialog.h ../../library.h ../../mainwindow.h ../../removedialog.h ../../reportdialog.h ../../returndialog.h ../../studentdashboard.h ../../studentlogin.h ../../transaction.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../adddialog.cpp ../../admindashboard.cpp ../../adminlogin.cpp ../../app.cpp ../../borrowdialog.cpp ../../library.cpp ../../main.cpp ../../mainwindow.cpp ../../removedialog.cpp ../../reportdialog.cpp ../../returndialog.cpp ../../studentdashboard.cpp ../../studentlogin.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../adddialog.ui ../../admindashboard.ui ../../adminlogin.ui ../../app.ui ../../borrowdialog.ui ../../mainwindow.ui ../../removedialog.ui ../../reportdialog.ui ../../returndialog.ui ../../studentdashboard.ui ../../studentlogin.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1338,7 +1352,8 @@ qrc_book.cpp: ../../book.qrc \
 
 qrc_ressources.cpp: ../../ressources.qrc \
 		/opt/homebrew/share/qt/libexec/rcc \
-		../../IMG_2409.heic
+		../../IMG_2409.heic \
+		../../library.png
 	/opt/homebrew/share/qt/libexec/rcc -name ressources ../../ressources.qrc -o qrc_ressources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -1347,9 +1362,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -mmacosx-version-min=14.0 -Wall -Wextra -dM -E -o moc_predefs.h /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_adddialog.cpp moc_admindashboard.cpp moc_adminlogin.cpp moc_borrowdialog.cpp moc_mainwindow.cpp moc_reportdialog.cpp moc_returndialog.cpp moc_studentdashboard.cpp moc_studentlogin.cpp
+compiler_moc_header_make_all: moc_adddialog.cpp moc_admindashboard.cpp moc_adminlogin.cpp moc_app.cpp moc_borrowdialog.cpp moc_mainwindow.cpp moc_removedialog.cpp moc_reportdialog.cpp moc_returndialog.cpp moc_studentdashboard.cpp moc_studentlogin.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_adddialog.cpp moc_admindashboard.cpp moc_adminlogin.cpp moc_borrowdialog.cpp moc_mainwindow.cpp moc_reportdialog.cpp moc_returndialog.cpp moc_studentdashboard.cpp moc_studentlogin.cpp
+	-$(DEL_FILE) moc_adddialog.cpp moc_admindashboard.cpp moc_adminlogin.cpp moc_app.cpp moc_borrowdialog.cpp moc_mainwindow.cpp moc_removedialog.cpp moc_reportdialog.cpp moc_returndialog.cpp moc_studentdashboard.cpp moc_studentlogin.cpp
 moc_adddialog.cpp: ../../adddialog.h \
 		../../book.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
@@ -1367,11 +1382,13 @@ moc_adddialog.cpp: ../../adddialog.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qvector.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
 		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../adddialog.h -o moc_adddialog.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtPrintSupport.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../adddialog.h -o moc_adddialog.cpp
 
 moc_admindashboard.cpp: ../../admindashboard.h \
 		../../library.h \
@@ -1390,18 +1407,27 @@ moc_admindashboard.cpp: ../../admindashboard.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
 		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../admindashboard.h -o moc_admindashboard.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtPrintSupport.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../admindashboard.h -o moc_admindashboard.cpp
 
 moc_adminlogin.cpp: ../../adminlogin.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../adminlogin.h -o moc_adminlogin.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtPrintSupport.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../adminlogin.h -o moc_adminlogin.cpp
+
+moc_app.cpp: ../../app.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
+		moc_predefs.h \
+		/opt/homebrew/share/qt/libexec/moc
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtPrintSupport.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../app.h -o moc_app.cpp
 
 moc_borrowdialog.cpp: ../../borrowdialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
@@ -1420,7 +1446,7 @@ moc_borrowdialog.cpp: ../../borrowdialog.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../borrowdialog.h -o moc_borrowdialog.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtPrintSupport.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../borrowdialog.h -o moc_borrowdialog.cpp
 
 moc_mainwindow.cpp: ../../mainwindow.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -1431,14 +1457,39 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../adminlogin.h \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../mainwindow.h -o moc_mainwindow.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtPrintSupport.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../mainwindow.h -o moc_mainwindow.cpp
+
+moc_removedialog.cpp: ../../removedialog.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../library.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QFile \
+		/opt/homebrew/lib/QtCore.framework/Headers/qfile.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTextStream \
+		/opt/homebrew/lib/QtCore.framework/Headers/qtextstream.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QVector \
+		/opt/homebrew/lib/QtCore.framework/Headers/qvector.h \
+		../../book.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QList \
+		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		moc_predefs.h \
+		/opt/homebrew/share/qt/libexec/moc
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtPrintSupport.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../removedialog.h -o moc_removedialog.cpp
 
 moc_reportdialog.cpp: ../../reportdialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../reportdialog.h -o moc_reportdialog.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtPrintSupport.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../reportdialog.h -o moc_reportdialog.cpp
 
 moc_returndialog.cpp: ../../returndialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
@@ -1457,7 +1508,7 @@ moc_returndialog.cpp: ../../returndialog.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../returndialog.h -o moc_returndialog.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtPrintSupport.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../returndialog.h -o moc_returndialog.cpp
 
 moc_studentdashboard.cpp: ../../studentdashboard.h \
 		../../TransactionManager.h \
@@ -1476,22 +1527,22 @@ moc_studentdashboard.cpp: ../../studentdashboard.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../studentdashboard.h -o moc_studentdashboard.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtPrintSupport.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../studentdashboard.h -o moc_studentdashboard.cpp
 
 moc_studentlogin.cpp: ../../studentlogin.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../studentlogin.h -o moc_studentlogin.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/mac/Desktop/LIBRARY/thefinaleproject/build/Bureau_arm_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/mac/Desktop/LIBRARY/thefinaleproject -I/opt/homebrew/lib/QtPrintSupport.framework/Headers -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/16/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../../studentlogin.h -o moc_studentlogin.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_adddialog.h ui_admindashboard.h ui_adminlogin.h ui_borrowdialog.h ui_mainwindow.h ui_reportdialog.h ui_returndialog.h ui_studentdashboard.h ui_studentlogin.h
+compiler_uic_make_all: ui_adddialog.h ui_admindashboard.h ui_adminlogin.h ui_app.h ui_borrowdialog.h ui_mainwindow.h ui_removedialog.h ui_reportdialog.h ui_returndialog.h ui_studentdashboard.h ui_studentlogin.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_adddialog.h ui_admindashboard.h ui_adminlogin.h ui_borrowdialog.h ui_mainwindow.h ui_reportdialog.h ui_returndialog.h ui_studentdashboard.h ui_studentlogin.h
+	-$(DEL_FILE) ui_adddialog.h ui_admindashboard.h ui_adminlogin.h ui_app.h ui_borrowdialog.h ui_mainwindow.h ui_removedialog.h ui_reportdialog.h ui_returndialog.h ui_studentdashboard.h ui_studentlogin.h
 ui_adddialog.h: ../../adddialog.ui \
 		/opt/homebrew/share/qt/libexec/uic
 	/opt/homebrew/share/qt/libexec/uic ../../adddialog.ui -o ui_adddialog.h
@@ -1504,6 +1555,10 @@ ui_adminlogin.h: ../../adminlogin.ui \
 		/opt/homebrew/share/qt/libexec/uic
 	/opt/homebrew/share/qt/libexec/uic ../../adminlogin.ui -o ui_adminlogin.h
 
+ui_app.h: ../../app.ui \
+		/opt/homebrew/share/qt/libexec/uic
+	/opt/homebrew/share/qt/libexec/uic ../../app.ui -o ui_app.h
+
 ui_borrowdialog.h: ../../borrowdialog.ui \
 		/opt/homebrew/share/qt/libexec/uic
 	/opt/homebrew/share/qt/libexec/uic ../../borrowdialog.ui -o ui_borrowdialog.h
@@ -1511,6 +1566,10 @@ ui_borrowdialog.h: ../../borrowdialog.ui \
 ui_mainwindow.h: ../../mainwindow.ui \
 		/opt/homebrew/share/qt/libexec/uic
 	/opt/homebrew/share/qt/libexec/uic ../../mainwindow.ui -o ui_mainwindow.h
+
+ui_removedialog.h: ../../removedialog.ui \
+		/opt/homebrew/share/qt/libexec/uic
+	/opt/homebrew/share/qt/libexec/uic ../../removedialog.ui -o ui_removedialog.h
 
 ui_reportdialog.h: ../../reportdialog.ui \
 		/opt/homebrew/share/qt/libexec/uic
@@ -1557,11 +1616,11 @@ adddialog.o: ../../adddialog.cpp ../../adddialog.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qvector.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
 		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
-		ui_adddialog.h \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h
+		ui_adddialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o adddialog.o ../../adddialog.cpp
 
 admindashboard.o: ../../admindashboard.cpp ../../admindashboard.h \
@@ -1581,13 +1640,26 @@ admindashboard.o: ../../admindashboard.cpp ../../admindashboard.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
 		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
 		ui_admindashboard.h \
 		../../adminlogin.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
-		../../adddialog.h
+		../../adddialog.h \
+		../../removedialog.h \
+		/opt/homebrew/lib/QtGui.framework/Headers/QPdfWriter \
+		/opt/homebrew/lib/QtGui.framework/Headers/qpdfwriter.h \
+		/opt/homebrew/lib/QtGui.framework/Headers/QPainter \
+		/opt/homebrew/lib/QtGui.framework/Headers/qpainter.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		/opt/homebrew/lib/QtGui.framework/Headers/QDesktopServices \
+		/opt/homebrew/lib/QtGui.framework/Headers/qdesktopservices.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QUrl \
+		/opt/homebrew/lib/QtCore.framework/Headers/qurl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o admindashboard.o ../../admindashboard.cpp
 
 adminlogin.o: ../../adminlogin.cpp ../../adminlogin.h \
@@ -1616,6 +1688,16 @@ adminlogin.o: ../../adminlogin.cpp ../../adminlogin.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o adminlogin.o ../../adminlogin.cpp
+
+app.o: ../../app.cpp ../../app.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
+		ui_app.h \
+		/opt/homebrew/lib/QtGui.framework/Headers/QPixmap \
+		/opt/homebrew/lib/QtGui.framework/Headers/qpixmap.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o app.o ../../app.cpp
 
 borrowdialog.o: ../../borrowdialog.cpp ../../borrowdialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
@@ -1660,7 +1742,9 @@ library.o: ../../library.cpp ../../library.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QList \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
-		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o library.o ../../library.cpp
 
 main.o: ../../main.cpp ../../mainwindow.h \
@@ -1687,8 +1771,33 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPainterPath \
 		/opt/homebrew/lib/QtGui.framework/Headers/qpainterpath.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
-		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		../../app.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../mainwindow.cpp
+
+removedialog.o: ../../removedialog.cpp ../../removedialog.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../library.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QFile \
+		/opt/homebrew/lib/QtCore.framework/Headers/qfile.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QTextStream \
+		/opt/homebrew/lib/QtCore.framework/Headers/qtextstream.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QVector \
+		/opt/homebrew/lib/QtCore.framework/Headers/qvector.h \
+		../../book.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QList \
+		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		ui_removedialog.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o removedialog.o ../../removedialog.cpp
 
 reportdialog.o: ../../reportdialog.cpp ../../reportdialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
@@ -1697,7 +1806,9 @@ reportdialog.o: ../../reportdialog.cpp ../../reportdialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QFile \
-		/opt/homebrew/lib/QtCore.framework/Headers/qfile.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qfile.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDate \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o reportdialog.o ../../reportdialog.cpp
 
 returndialog.o: ../../returndialog.cpp ../../returndialog.h \
@@ -1723,9 +1834,9 @@ returndialog.o: ../../returndialog.cpp ../../returndialog.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
 		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
-		ui_returndialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		ui_returndialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o returndialog.o ../../returndialog.cpp
 
 studentdashboard.o: ../../studentdashboard.cpp ../../studentdashboard.h \
@@ -1756,10 +1867,10 @@ studentdashboard.o: ../../studentdashboard.cpp ../../studentdashboard.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
 		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
-		../../borrowdialog.h \
-		../../reportdialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../borrowdialog.h \
+		../../reportdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o studentdashboard.o ../../studentdashboard.cpp
 
 studentlogin.o: ../../studentlogin.cpp ../../studentlogin.h \
@@ -1800,11 +1911,17 @@ moc_admindashboard.o: moc_admindashboard.cpp
 moc_adminlogin.o: moc_adminlogin.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_adminlogin.o moc_adminlogin.cpp
 
+moc_app.o: moc_app.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_app.o moc_app.cpp
+
 moc_borrowdialog.o: moc_borrowdialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_borrowdialog.o moc_borrowdialog.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_removedialog.o: moc_removedialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_removedialog.o moc_removedialog.cpp
 
 moc_reportdialog.o: moc_reportdialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_reportdialog.o moc_reportdialog.cpp

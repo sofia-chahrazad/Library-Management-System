@@ -3,12 +3,22 @@
 #include "adminlogin.h"
 #include"library.h"
 #include"adddialog.h"
+#include"removedialog.h"
+#include <QPdfWriter>
+#include <QPainter>
+#include <QFileDialog>
+#include <QTextStream>
+#include <QDesktopServices>
+#include <QUrl>
+
 
 adminDashboard::adminDashboard(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::adminDashboard)
 {
+
     ui->setupUi(this);
+    connect(ui->removeButton, &QPushButton::clicked, this, &adminDashboard::removeSelectedBook);
     connect(ui->logoutButton, &QPushButton::clicked, this, [=]() {
         this->close();
         AdminLogin *a = new AdminLogin;
@@ -26,7 +36,7 @@ adminDashboard::adminDashboard(QWidget *parent)
     ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    ui->tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);;
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
 
     ui->tableWidget->setColumnCount(5);
     QStringList headers = {"Title", "Author", "ISBN","Year", "AVAILABLE"};
@@ -35,8 +45,9 @@ adminDashboard::adminDashboard(QWidget *parent)
     lib = new Library("/Users/mac/Desktop/LIBRARY/books.txt");
     loadBooksToTable("/Users/mac/Desktop/LIBRARY/books.txt");
 
-
+    connect(ui->reportButton, &QPushButton::clicked, this, &adminDashboard::on_reportButton_clicked);
 }
+
 
 
 void adminDashboard::loadBooksToTable(const QString &filename) {
@@ -117,7 +128,87 @@ void adminDashboard::on_addButton_clicked(){
     a->exec();
 
 }
+void adminDashboard::removeSelectedBook() {
+    int row = ui->tableWidget->currentRow();
+    if (row < 0) {
+        QMessageBox::warning(this, "No selection", "Please select a book to remove.");
+        return;
+    }
 
+    QString isbn = ui->tableWidget->item(row, 2)->text(); // ISBN is column 2
+    Book book = lib->getBookByISBN(isbn); // You need to implement this function in Library
+
+    removeDialog *dialog = new removeDialog(lib, book, this);
+
+    connect(dialog, &removeDialog::bookRemoved, this, [=]() {
+        loadBooksToTable("/Users/mac/Desktop/LIBRARY/books.txt");
+    });
+
+    dialog->exec();
+}
+
+void adminDashboard::on_reportButton_clicked() {
+    QString reportsFile = "/Users/mac/Desktop/LIBRARY/reports.txt";
+    QFile file(reportsFile);
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QMessageBox::critical(this, "Error", "Could not open reports.txt");
+        return;
+    }
+
+    QTextStream in(&file);
+    QString reportContent = in.readAll();
+    file.close();
+
+    QString filePath = QFileDialog::getSaveFileName(this, "Save PDF", "", "PDF Files (*.pdf)");
+    if (filePath.isEmpty()) return;
+    if (!filePath.endsWith(".pdf", Qt::CaseInsensitive)) filePath += ".pdf";
+
+    QPdfWriter pdfWriter(filePath);
+    pdfWriter.setPageSize(QPageSize::A4);
+    pdfWriter.setResolution(96);
+
+    QPainter painter(&pdfWriter);
+    QFont font("Times", 12);
+    painter.setFont(font);
+
+    int margin = 80;
+    int x = margin;
+    int y = margin;
+    int pageWidth = pdfWriter.width() - 2 * margin;
+    int pageHeight = pdfWriter.height() - 2 * margin;
+
+    QFontMetrics metrics(font);
+    int lineSpacing = metrics.lineSpacing();
+
+    QStringList sections = reportContent.split("--------------------", Qt::SkipEmptyParts);
+    for (QString section : sections) {
+        section = section.trimmed();
+        QStringList lines = section.split('\n');
+
+        for (const QString& line : lines) {
+            QString currentLine = line.trimmed();
+            QRect textRect(x, y, pageWidth, lineSpacing * 10); // arbitrary height to allow wrapping
+            QRect bounding = painter.boundingRect(textRect, Qt::TextWordWrap, currentLine);
+
+            if (y + bounding.height() > pdfWriter.height() - margin) {
+                pdfWriter.newPage();
+                y = margin;
+            }
+
+            painter.drawText(QRect(x, y, pageWidth, bounding.height()), Qt::TextWordWrap, currentLine);
+            y += bounding.height() + 5;
+        }
+
+        // Add space between sections
+        y += lineSpacing * 2;
+    }
+
+    painter.end();
+
+    QMessageBox::information(this, "PDF Saved", "Report PDF has been created!");
+    QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
+}
 
 adminDashboard::~adminDashboard()
 {

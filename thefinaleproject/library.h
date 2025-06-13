@@ -7,6 +7,7 @@
 #include <QVector>
 #include"book.h"
 #include <QDir>
+#include<QMessageBox>
 
 class Library
 {private:
@@ -94,6 +95,37 @@ public:
         }
         return false; // Book not found
     }
+    bool removeBookByISBN(const QString &isbn) {
+        for (int i = 0; i < books.size(); ++i) {
+            if (books[i].ISBN == isbn) {
+                books.removeAt(i);
+                saveBooks();  // Add this
+                return true;
+            }
+        }
+        return false;
+    }
+    void saveToFile(const QString &filename) {
+        QFile file(filename);
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            qDebug() << "Could not open file for writing:" << filename;
+            return;
+        }
+
+        QTextStream out(&file);
+        for (const Book &book : books) {
+            out << book.toString() << "\n";
+        }
+
+        file.close();
+    }
+    Book getBookByISBN(const QString& isbn) const {
+        for (const Book& b : books) {
+            if (b.ISBN == isbn) return b;
+        }
+        return Book(); // Return an empty/default book if not found
+    }
+
 };
 
 #endif // LIBRARY_H

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>659</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -179,6 +179,38 @@ QPushButton:hover {
     </property>
     <property name="text">
      <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="appButton">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>160</y>
+      <width>251</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>23</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #32CD32;
+    color: white;
+    font-weight: bold;
+    border-radius: 34px;
+    padding: 10px 20px;
+}
+
+QPushButton:hover {
+background-color:#308420;
+}</string>
+    </property>
+    <property name="text">
+     <string>about the app</string>
     </property>
    </widget>
   </widget>
